@@ -1,0 +1,30 @@
+<?php
+if(isset($_POST['submit'])){
+    $username = htmlentities($_POST['username']);
+
+    setcookie('username', $username, time()+86400); 
+    //1hour time limit
+    
+    header('Location: index.php');
+}
+
+
+if(count($_COOKIE) > 0) {
+  echo "Cookies are enabled.";
+} else {
+  echo "Please add your name.<br>";
+  echo '<form method="POST" action="Cookie.php">
+                <input type="text" name="username" placeholder="Enter Username">
+                <br>
+                <input type="submit" name="submit" value="Submit">
+            </form>
+        </div>';
+}
+
+
+
+if(isset($_COOKIE['username'])) {
+  echo "Value is: ". $_COOKIE['username'];
+}
+
+?>
